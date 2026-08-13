@@ -1,0 +1,314 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyO/2Md0YcR3EgsSroSOqwlK",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/lzk0902/Programa-oparaci-nciadedados/blob/main/Programa-oparaci-nciadedados\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "vuNQFM6yQk67",
+        "outputId": "e701b4a3-2ee6-4a3f-9ddc-5de47afb56fd"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "git version 2.34.1\n",
+            "user.name=lzk0902\n",
+            "user.email=lucas.kulzer@sou.unijui.edu.br\n",
+            "init.defaultbranch=main\n"
+          ]
+        }
+      ],
+      "source": [
+        "!git --version\n",
+        "!git config --global user.name \"lzk0902\"\n",
+        "!git config --global user.email \"lucas.kulzer@sou.unijui.edu.br\"\n",
+        "!git config --global init.defaultBranch main\n",
+        "!git config --global --list"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git clone https://github.com/lzk0902/Programa-oparaci-nciadedados.git\n",
+        "%cd Programa-oparaci-nciadedados\n",
+        "!ls\n",
+        "!git status"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tDXWtIdsR7do",
+        "outputId": "57179eef-44fd-4c7f-eac9-abc574de71d1"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "fatal: destination path 'Programa-oparaci-nciadedados' already exists and is not an empty directory.\n",
+            "/content/Programa-oparaci-nciadedados\n",
+            "On branch main\n",
+            "\n",
+            "No commits yet\n",
+            "\n",
+            "nothing to commit (create/copy files and use \"git add\" to track)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "%%writefile README.md\n",
+        "\n",
+        "Arquivos da Aula 03: Colab, GitHub e Git.\n",
+        "\n",
+        "Lucas Zimmermann"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "3KEu4lHPUB9h",
+        "outputId": "08dbbdec-5d4d-4f2e-e320-01e8fc875337"
+      },
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Overwriting README.md\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!cat README.md\n",
+        "!git status"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zZXm-riRW_es",
+        "outputId": "441e7a10-7f28-45ef-a66d-d31deaff1199"
+      },
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "Arquivos da Aula 03: Colab, GitHub e Git.\n",
+            "\n",
+            "Lucas Zimmermann\n",
+            "On branch main\n",
+            "\n",
+            "No commits yet\n",
+            "\n",
+            "Untracked files:\n",
+            "  (use \"git add <file>...\" to include in what will be committed)\n",
+            "\t\u001b[31mREADME.md\u001b[m\n",
+            "\n",
+            "nothing added to commit but untracked files present (use \"git add\" to track)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git add README.md\n",
+        "!git status"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NjsKFI-rXRjR",
+        "outputId": "e725c965-7c1e-4e85-9faa-dd53413cf3db"
+      },
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "On branch main\n",
+            "\n",
+            "No commits yet\n",
+            "\n",
+            "Changes to be committed:\n",
+            "  (use \"git rm --cached <file>...\" to unstage)\n",
+            "\t\u001b[32mnew file:   README.md\u001b[m\n",
+            "\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git commit -m \"Criamos uma lista\""
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "mhcmTWdYXjsF",
+        "outputId": "75305be5-2b40-423d-8048-ad6ecfa2a4a6"
+      },
+      "execution_count": 19,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[main (root-commit) 8e7686f] Criamos uma lista\n",
+            " 1 file changed, 4 insertions(+)\n",
+            " create mode 100644 README.md\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git push origin main"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "f5lrs9j0X7uY",
+        "outputId": "0b702c97-2215-4a36-c868-f8cb654f2ffe"
+      },
+      "execution_count": 20,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "fatal: could not read Username for 'https://github.com': No such device or address\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!apt-get -qq update\n",
+        "!apt-get -qq install gh\n",
+        "!GH_PROMPT_DISABLED=1 gh auth login --hostname github.com --git-protocol https --web\n",
+        "!gh auth setup-git\n",
+        "!gh auth status"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "P-alM6suYXc4",
+        "outputId": "fbf1e41e-19c0-42dd-d362-013214f3b1f1"
+      },
+      "execution_count": 22,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu jammy InRelease' does not seem to provide it (sources.list entry misspelt?)\n",
+            "\n",
+            "\u001b[0;33m!\u001b[0m First copy your one-time code: \u001b[0;1;39mD4B7-7A48\u001b[0m\n",
+            "\u001b[0;1;39mOpen this URL\u001b[0m to continue in your web browser: https://github.com/login/device\n",
+            "\u001b[0;32m✓\u001b[0m Authentication complete.\n",
+            "- gh config set -h github.com git_protocol https\n",
+            "\u001b[0;32m✓\u001b[0m Configured git protocol\n",
+            "\u001b[0;33m!\u001b[0m Authentication credentials saved in plain text\n",
+            "\u001b[0;32m✓\u001b[0m Logged in as \u001b[0;1;39mlzk0902\u001b[0m\n",
+            "\u001b[0;1;39mgithub.com\u001b[0m\n",
+            "  \u001b[0;32m✓\u001b[0m Logged in to github.com account \u001b[0;1;39mlzk0902\u001b[0m (/root/.config/gh/hosts.yml)\n",
+            "  - Active account: \u001b[0;1;39mtrue\u001b[0m\n",
+            "  - Git operations protocol: \u001b[0;1;39mhttps\u001b[0m\n",
+            "  - Token: \u001b[0;1;39mgho_************************************\u001b[0m\n",
+            "  - Token scopes: \u001b[0;1;39m'gist', 'read:org', 'repo'\u001b[0m\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git push origin main"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7iUV8GAmZOHu",
+        "outputId": "3cb5c1fa-3d6a-48e8-bd7e-92ece8eab98e"
+      },
+      "execution_count": 23,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enumerating objects: 3, done.\n",
+            "Counting objects:  33% (1/3)\rCounting objects:  66% (2/3)\rCounting objects: 100% (3/3)\rCounting objects: 100% (3/3), done.\n",
+            "Delta compression using up to 2 threads\n",
+            "Compressing objects:  50% (1/2)\rCompressing objects: 100% (2/2)\rCompressing objects: 100% (2/2), done.\n",
+            "Writing objects:  33% (1/3)\rWriting objects:  66% (2/3)\rWriting objects: 100% (3/3)\rWriting objects: 100% (3/3), 280 bytes | 280.00 KiB/s, done.\n",
+            "Total 3 (delta 0), reused 0 (delta 0), pack-reused 0\n",
+            "To https://github.com/lzk0902/Programa-oparaci-nciadedados.git\n",
+            " * [new branch]      main -> main\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "bKELrLwDZUeN"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
