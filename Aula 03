@@ -1,0 +1,70 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOCHhu2ez5IQgo96NYgL2/t",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/lzk0902/Programa-oparaci-nciadedados/blob/main/Aula%2003\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 6,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Qo3RFQCElzz7",
+        "outputId": "3787f3b5-9927-4b72-bd76-75b0446dd4c2"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "informe a primeira nota10\n",
+            "informe a segunda nota4\n",
+            "informe a terceira nota5\n",
+            "a media do aluno  é : 6.333333333333333\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "x1 = int (input (\"informe a primeira nota\"))\n",
+        "x2 = int (input (\"informe a segunda nota\"))\n",
+        "x3 = int (input (\"informe a terceira nota\"))\n",
+        "media = (x1 + x2 + x3) / 3\n",
+        "print (f\"a media do aluno  é : {media}\")\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "hRk18Ohxmcps"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
