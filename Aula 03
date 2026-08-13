@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyOCHhu2ez5IQgo96NYgL2/t",
+      "authorship_tag": "ABX9TyNNAXsVIePsQbT/uIzowGbD",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -28,43 +28,23 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 6,
+      "execution_count": null,
       "metadata": {
-        "colab": {
-          "base_uri": "https://localhost:8080/"
-        },
-        "id": "Qo3RFQCElzz7",
-        "outputId": "3787f3b5-9927-4b72-bd76-75b0446dd4c2"
+        "id": "cx0hqpzepc7e"
       },
-      "outputs": [
-        {
-          "output_type": "stream",
-          "name": "stdout",
-          "text": [
-            "informe a primeira nota10\n",
-            "informe a segunda nota4\n",
-            "informe a terceira nota5\n",
-            "a media do aluno  é : 6.333333333333333\n"
-          ]
-        }
-      ],
+      "outputs": [],
       "source": [
-        "\n",
+        "nome = str (input (\"informe o nome do aluno\"))\n",
         "x1 = int (input (\"informe a primeira nota\"))\n",
         "x2 = int (input (\"informe a segunda nota\"))\n",
         "x3 = int (input (\"informe a terceira nota\"))\n",
-        "media = (x1 + x2 + x3) / 3\n",
-        "print (f\"a media do aluno  é : {media}\")\n"
+        "x1float = float(x1)\n",
+        "x2float = float(x2)\n",
+        "x3float = float(x3)\n",
+        "\n",
+        "media = (x1float + x2float + x3float) / 3\n",
+        "print (f\"a media do aluno : {nome}  é  {media}\")\n"
       ]
-    },
-    {
-      "cell_type": "code",
-      "source": [],
-      "metadata": {
-        "id": "hRk18Ohxmcps"
-      },
-      "execution_count": null,
-      "outputs": []
     }
   ]
 }
