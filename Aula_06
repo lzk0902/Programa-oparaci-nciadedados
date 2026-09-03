@@ -1,0 +1,207 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOMMng9qFb2AvyRnQBlKQuD",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/lzk0902/Programa-oparaci-nciadedados/blob/main/Aula_06\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Aula 06 - Atividade de Revisão\n"
+      ],
+      "metadata": {
+        "id": "vaUtWPAtULki"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "Atividade 1"
+      ],
+      "metadata": {
+        "id": "hv7z38uHUWgc"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import random\n",
+        "\n",
+        "historico = []\n",
+        "\n",
+        "continuar = \"s\"\n",
+        "\n",
+        "while continuar == \"s\":\n",
+        "    valor = random.randint(0, 15)\n",
+        "    tentativas = 0\n",
+        "\n",
+        "    while True:\n",
+        "        fds = int(input(\"Informe um valor de 0 a 15: \"))\n",
+        "        tentativas += 1\n",
+        "        if fds == valor:\n",
+        "            print(f\"Você acertou! O número era {valor}. Tentativas: {tentativas}\")\n",
+        "            break\n",
+        "        else:\n",
+        "            print(\"Errado, tente novamente.\")\n",
+        "\n",
+        "\n",
+        "    with open(\"historico.txt\", \"a\") as arquivo:\n",
+        "        arquivo.write(f\"Número: {valor} | Tentativas: {tentativas}\\n\")\n",
+        "\n",
+        "    historico.append(f\"Número: {valor} | Tentativas: {tentativas}\")\n",
+        "\n",
+        "    continuar = input(\"Quer tentar de novo? (s/n): \")\n",
+        "\n",
+        "\n",
+        "print(\"\\n--- Histórico ---\")\n",
+        "for linha in historico:\n",
+        "    print(linha)"
+      ],
+      "metadata": {
+        "id": "cGVgbK3aYk2v",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "74ebb864-ed5f-4c97-efaf-495027de018b"
+      },
+      "execution_count": 27,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Informe um valor de 0 a 15: 0\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 1\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 2\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 3\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 4\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 5\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 6\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 7\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 8\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 9\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 10\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 11\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 12\n",
+            "Errado, tente novamente.\n",
+            "Informe um valor de 0 a 15: 13\n",
+            "Você acertou! O número era 13. Tentativas: 14\n",
+            "Quer tentar de novo? (s/n): n\n",
+            "\n",
+            "--- Histórico ---\n",
+            "Número: 13 | Tentativas: 14\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "Atividade 02"
+      ],
+      "metadata": {
+        "id": "HFMYWIdHhh5S"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import csv\n",
+        "\n",
+        "lista_compras = []\n",
+        "continuar = \"s\"\n",
+        "\n",
+        "while continuar == \"s\":\n",
+        "    item = input(\"Nome do item: \")\n",
+        "    quantidade = int(input(\"Quantidade: \"))\n",
+        "    valor = float(input(\"Valor unitário: \"))\n",
+        "\n",
+        "    lista_compras.append([item, quantidade, valor])\n",
+        "\n",
+        "    continuar = input(\"Adicionar outro item? (s/n): \")\n",
+        "\n",
+        "\n",
+        "total = 0\n",
+        "for item, quantidade, valor in lista_compras:\n",
+        "    total += quantidade * valor\n",
+        "\n",
+        "print(f\"\\nValor total das compras: R$ {total:.2f}\")\n",
+        "\n",
+        "\n",
+        "with open(\"lista_compras.csv\", \"w\", newline=\"\") as arquivo:\n",
+        "    escritor = csv.writer(arquivo)\n",
+        "    escritor.writerow([\"Item\", \"Quantidade\", \"Valor Unitário\"])\n",
+        "    for linha in lista_compras:\n",
+        "        escritor.writerow(linha)\n",
+        "\n",
+        "print(\"Lista salva em lista_compras.csv\")\n"
+      ],
+      "metadata": {
+        "id": "FX9KYH4bZBVT",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "collapsed": true,
+        "outputId": "cda007b6-d8b5-4a68-ff5c-5fb0d7840976"
+      },
+      "execution_count": 28,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Nome do item: mamao\n",
+            "Quantidade: 2\n",
+            "Valor unitário: 10\n",
+            "Adicionar outro item? (s/n): s\n",
+            "Nome do item: açucar\n",
+            "Quantidade: 3\n",
+            "Valor unitário: 20\n",
+            "Adicionar outro item? (s/n): n\n",
+            "\n",
+            "Valor total das compras: R$ 80.00\n",
+            "Lista salva em lista_compras.csv\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
