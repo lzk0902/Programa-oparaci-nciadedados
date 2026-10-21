@@ -1,0 +1,208 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMwYjf8gPV0BMI1L6iwvqHB",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/lzk0902/Programa-oparaci-nciadedados/blob/main/Usando%20Orienta%C3%A7%C3%A3o%20a%20Objetos\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "id": "nNIUvxTOmcxS"
+      },
+      "outputs": [],
+      "source": [
+        "from abc import ABC, abstractmethod\n",
+        "\n",
+        "\n",
+        "class Operacao(ABC):\n",
+        "    \"\"\"Classe abstrata: define o contrato que toda operação deve seguir.\"\"\"\n",
+        "\n",
+        "    simbolo = \"\"\n",
+        "\n",
+        "    @abstractmethod\n",
+        "    def executar(self, *args):\n",
+        "        pass\n",
+        "\n",
+        "\n",
+        "class Soma(Operacao):\n",
+        "    simbolo = \"+\"\n",
+        "\n",
+        "    def executar(self, a, b):\n",
+        "        return a + b\n",
+        "\n",
+        "\n",
+        "class Subtracao(Operacao):\n",
+        "    simbolo = \"-\"\n",
+        "\n",
+        "    def executar(self, a, b):\n",
+        "        return a - b\n",
+        "\n",
+        "\n",
+        "class Multiplicacao(Operacao):\n",
+        "    simbolo = \"*\"\n",
+        "\n",
+        "    def executar(self, a, b):\n",
+        "        return a * b\n",
+        "\n",
+        "\n",
+        "class Divisao(Operacao):\n",
+        "    simbolo = \"/\"\n",
+        "\n",
+        "    def executar(self, a, b):\n",
+        "        if b == 0:\n",
+        "            raise ZeroDivisionError(\"Divisão por zero não é permitida.\")\n",
+        "        return a / b\n",
+        "\n",
+        "\n",
+        "class Potencia(Operacao):\n",
+        "    simbolo = \"^\"\n",
+        "\n",
+        "    def executar(self, a, b):\n",
+        "        return a ** b\n",
+        "\n",
+        "\n",
+        "class RaizQuadrada(Operacao):\n",
+        "    \"\"\"Raiz quadrada pelo método de Newton: x_novo = (x + n/x) / 2\"\"\"\n",
+        "\n",
+        "    simbolo = \"raiz\"\n",
+        "\n",
+        "    def __init__(self, tolerancia=1e-10, max_iteracoes=100):\n",
+        "        self.tolerancia = tolerancia\n",
+        "        self.max_iteracoes = max_iteracoes\n",
+        "\n",
+        "    def executar(self, n):\n",
+        "        if n < 0:\n",
+        "            raise ValueError(\"Não existe raiz quadrada real de número negativo.\")\n",
+        "        if n == 0:\n",
+        "            return 0.0\n",
+        "\n",
+        "        x = n if n >= 1 else 1.0  # chute inicial\n",
+        "        for _ in range(self.max_iteracoes):\n",
+        "            x_novo = (x + n / x) / 2\n",
+        "            if abs(x_novo - x) < self.tolerancia:\n",
+        "                return x_novo\n",
+        "            x = x_novo\n",
+        "        return x"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Calculadora:\n",
+        "    def __init__(self):\n",
+        "        self._historico = []  # atributo \"protegido\" (encapsulado)\n",
+        "        self._operacoes = {\n",
+        "            op.simbolo: op\n",
+        "            for op in [Soma(), Subtracao(), Multiplicacao(),\n",
+        "                       Divisao(), Potencia(), RaizQuadrada()]\n",
+        "        }\n",
+        "\n",
+        "    def calcular(self, simbolo, *args):\n",
+        "        if simbolo not in self._operacoes:\n",
+        "            raise ValueError(f\"Operação '{simbolo}' não suportada.\")\n",
+        "\n",
+        "        resultado = self._operacoes[simbolo].executar(*args)\n",
+        "        self._registrar(simbolo, args, resultado)\n",
+        "        return resultado\n",
+        "\n",
+        "    def _registrar(self, simbolo, args, resultado):\n",
+        "        if len(args) == 1:\n",
+        "            texto = f\"{simbolo}({args[0]}) = {resultado}\"\n",
+        "        else:\n",
+        "            texto = f\"{args[0]} {simbolo} {args[1]} = {resultado}\"\n",
+        "        self._historico.append(texto)\n",
+        "\n",
+        "    @property\n",
+        "    def historico(self):\n",
+        "        return list(self._historico)  # devolve cópia, protegendo o original\n",
+        "\n",
+        "    def operacoes_disponiveis(self):\n",
+        "        return list(self._operacoes.keys())"
+      ],
+      "metadata": {
+        "id": "Kh3T0ZiBm_oT"
+      },
+      "execution_count": 5,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "calc = Calculadora()\n",
+        "\n",
+        "print(calc.calcular(\"+\", 10, 5))\n",
+        "print(calc.calcular(\"-\", 10, 5))\n",
+        "print(calc.calcular(\"*\", 10, 5))\n",
+        "print(calc.calcular(\"/\", 10, 4))\n",
+        "print(calc.calcular(\"^\", 2, 8))\n",
+        "print(calc.calcular(\"raiz\", 144))\n",
+        "print(calc.calcular(\"raiz\", 2))  # ≈ 1.41421356...\n",
+        "\n",
+        "try:\n",
+        "    calc.calcular(\"/\", 5, 0)\n",
+        "except ZeroDivisionError as e:\n",
+        "    print(\"Erro:\", e)\n",
+        "\n",
+        "print(\"\\nHistórico:\")\n",
+        "for linha in calc.historico:\n",
+        "    print(\" \", linha)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "UbEwG5SRnB_U",
+        "outputId": "f263a1f5-5fa6-45d8-e2e7-006d0677e7c1"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "15\n",
+            "5\n",
+            "50\n",
+            "2.5\n",
+            "256\n",
+            "12.0\n",
+            "1.414213562373095\n",
+            "Erro: Divisão por zero não é permitida.\n",
+            "\n",
+            "Histórico:\n",
+            "  10 + 5 = 15\n",
+            "  10 - 5 = 5\n",
+            "  10 * 5 = 50\n",
+            "  10 / 4 = 2.5\n",
+            "  2 ^ 8 = 256\n",
+            "  raiz(144) = 12.0\n",
+            "  raiz(2) = 1.414213562373095\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
