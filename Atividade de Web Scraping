@@ -1,0 +1,183 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPYRsmZtwi6Nc6/wzJ345wE",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/lzk0902/Programa-oparaci-nciadedados/blob/main/Atividade%20de%20Web%20Scraping\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "rtk8h5WHnnHD",
+        "outputId": "2cbca8d0-d397-46ac-cd7b-ceec7018c67c"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Selecting previously unselected package at-spi2-common.\n",
+            "(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 123399 files and directories currently installed.)\n",
+            "Preparing to unpack .../0-at-spi2-common_2.52.0-1build1_all.deb ...\n",
+            "Unpacking at-spi2-common (2.52.0-1build1) ...\n",
+            "Selecting previously unselected package libatk1.0-0t64:amd64.\n",
+            "Preparing to unpack .../1-libatk1.0-0t64_2.52.0-1build1_amd64.deb ...\n",
+            "Unpacking libatk1.0-0t64:amd64 (2.52.0-1build1) ...\n",
+            "Selecting previously unselected package libatspi2.0-0t64:amd64.\n",
+            "Preparing to unpack .../2-libatspi2.0-0t64_2.52.0-1build1_amd64.deb ...\n",
+            "Unpacking libatspi2.0-0t64:amd64 (2.52.0-1build1) ...\n",
+            "Selecting previously unselected package libatk-bridge2.0-0t64:amd64.\n",
+            "Preparing to unpack .../3-libatk-bridge2.0-0t64_2.52.0-1build1_amd64.deb ...\n",
+            "Unpacking libatk-bridge2.0-0t64:amd64 (2.52.0-1build1) ...\n",
+            "Selecting previously unselected package libxcomposite1:amd64.\n",
+            "Preparing to unpack .../4-libxcomposite1_1%3a0.4.5-1build3_amd64.deb ...\n",
+            "Unpacking libxcomposite1:amd64 (1:0.4.5-1build3) ...\n",
+            "Selecting previously unselected package google-chrome-stable.\n",
+            "Preparing to unpack .../5-google-chrome-stable_current_amd64.deb ...\n",
+            "Unpacking google-chrome-stable (156.0.8078.47-1) ...\n",
+            "Selecting previously unselected package libxtst6:amd64.\n",
+            "Preparing to unpack .../6-libxtst6_2%3a1.2.3-1.1ubuntu0.1_amd64.deb ...\n",
+            "Unpacking libxtst6:amd64 (2:1.2.3-1.1ubuntu0.1) ...\n",
+            "Selecting previously unselected package session-migration.\n",
+            "Preparing to unpack .../7-session-migration_0.3.9build1_amd64.deb ...\n",
+            "Unpacking session-migration (0.3.9build1) ...\n",
+            "Selecting previously unselected package gsettings-desktop-schemas.\n",
+            "Preparing to unpack .../8-gsettings-desktop-schemas_46.1-0ubuntu1_all.deb ...\n",
+            "Unpacking gsettings-desktop-schemas (46.1-0ubuntu1) ...\n",
+            "Selecting previously unselected package at-spi2-core.\n",
+            "Preparing to unpack .../9-at-spi2-core_2.52.0-1build1_amd64.deb ...\n",
+            "Unpacking at-spi2-core (2.52.0-1build1) ...\n",
+            "Setting up session-migration (0.3.9build1) ...\n",
+            "Created symlink /etc/systemd/user/graphical-session-pre.target.wants/session-migration.service → /usr/lib/systemd/user/session-migration.service.\n",
+            "Setting up libxtst6:amd64 (2:1.2.3-1.1ubuntu0.1) ...\n",
+            "Setting up libatspi2.0-0t64:amd64 (2.52.0-1build1) ...\n",
+            "Setting up at-spi2-common (2.52.0-1build1) ...\n",
+            "Setting up libxcomposite1:amd64 (1:0.4.5-1build3) ...\n",
+            "Setting up gsettings-desktop-schemas (46.1-0ubuntu1) ...\n",
+            "Setting up libatk1.0-0t64:amd64 (2.52.0-1build1) ...\n",
+            "Setting up libatk-bridge2.0-0t64:amd64 (2.52.0-1build1) ...\n",
+            "Setting up google-chrome-stable (156.0.8078.47-1) ...\n",
+            "update-alternatives: using /usr/bin/google-chrome-stable to provide /usr/bin/x-www-browser (x-www-browser) in auto mode\n",
+            "update-alternatives: using /usr/bin/google-chrome-stable to provide /usr/bin/gnome-www-browser (gnome-www-browser) in auto mode\n",
+            "update-alternatives: using /usr/bin/google-chrome-stable to provide /usr/bin/google-chrome (google-chrome) in auto mode\n",
+            "Processing triggers for libc-bin (2.39-0ubuntu8.9) ...\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_0.so.3 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libtcm_debug.so.1 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libur_adapter_level_zero.so.0 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libhwloc.so.15 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libtbb.so.12 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc_proxy.so.2 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libur_adapter_opencl.so.0 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc.so.2 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libtbbbind.so.3 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libur_loader.so.0 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libur_adapter_level_zero_v2.so.0 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_5.so.3 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libtcm.so.1 is not a symbolic link\n",
+            "\n",
+            "/sbin/ldconfig.real: /usr/local/lib/libumf.so.1 is not a symbolic link\n",
+            "\n",
+            "Processing triggers for man-db (2.12.0-4build2) ...\n",
+            "Processing triggers for libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.9) ...\n",
+            "Setting up at-spi2-core (2.52.0-1build1) ...\n"
+          ]
+        }
+      ],
+      "source": [
+        "!pip install -q selenium\n",
+        "!wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb\n",
+        "!apt-get install -y -qq ./google-chrome-stable_current_amd64.deb"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import json\n",
+        "from urllib.parse import quote\n",
+        "from selenium import webdriver\n",
+        "from selenium.webdriver.common.by import By\n",
+        "\n",
+        "cidade = input(\"Cidade: \").strip()\n",
+        "\n",
+        "opcoes = webdriver.ChromeOptions()\n",
+        "opcoes.binary_location = \"/usr/bin/google-chrome\"\n",
+        "opcoes.add_argument(\"--headless=new\")\n",
+        "opcoes.add_argument(\"--no-sandbox\")\n",
+        "opcoes.add_argument(\"--disable-dev-shm-usage\")\n",
+        "\n",
+        "driver = webdriver.Chrome(options=opcoes)\n",
+        "\n",
+        "try:\n",
+        "    driver.get(f\"https://wttr.in/{quote(cidade)}?format=j1\")\n",
+        "    texto = driver.find_element(By.TAG_NAME, \"body\").text\n",
+        "    hoje = json.loads(texto)[\"weather\"][0]\n",
+        "\n",
+        "    print(f\"\\nPrevisão de hoje em {cidade}:\")\n",
+        "    print(f\"Mínima: {hoje['mintempC']} °C\")\n",
+        "    print(f\"Máxima: {hoje['maxtempC']} °C\")\n",
+        "except Exception as e:\n",
+        "    print(\"Não foi possível obter a previsão:\", e)\n",
+        "finally:\n",
+        "    driver.quit()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tIlyzFWDnqiH",
+        "outputId": "f66f2d0e-1ed0-4147-db27-f6464e46700a"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Cidade: Santo Cristo\n",
+            "\n",
+            "Previsão de hoje em Santo Cristo:\n",
+            "Mínima: 16 °C\n",
+            "Máxima: 23 °C\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
